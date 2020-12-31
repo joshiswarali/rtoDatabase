@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Permit</title>
+</head>
+<body>
+<style type="text/css">
+   
+  div {
+  font-family:Arial;
+  
+  background:white;
+  position:absolute;
+  color:#000;
+  top:50%;
+  left:50%;
+  padding:15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}   
+    .container {
+      
+        width: 300px;
+        clear: both;
+    }
+    .container input {
+        width: 100%;
+        clear: both;
+    }
+p1
+{
+  font-size:25px;
+  font-weight:bold;
+  font-family:Arial;
+  position:relative;
+  top:20px;
+}
+
+body
+{
+   background:powderblue; }
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    width:100px;
+    text-decoration: none;
+    color: white;
+    background:steelblue;
+    font-family:Arial;
+    font-weight:bold;
+    font-size:18px;
+    padding:10px;
+}
+
+input[type="submit"]{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    width:300px;
+    text-decoration: none;
+    color: white;
+    background:steelblue;
+    font-family:Arial;
+    font-weight:bold;
+    font-size:18px;
+    padding:10px;
+}
+
+</style>
+
+
+<div class="container">
+<center><a href="rtousermainmenu.html" class="button">Main Menu</a><a href="rtostartpage.html" class="button">Logout</a></center>
+<center><p1>Enter details</p1></center>
+<br><br><br>
+<form action="user new permit.php" method="post">
+    <p>
+        <label for="Vehicleregno">Vehicle registration number:</label>
+        <input type="text" name="vehicleregno" id="Vehicleregno">
+    </p>
+    <p>
+        <label for="Region">Region:</label>
+        <input type="text" name="region" id="Region">
+    </p>
+   
+
+   <input type="submit" value="Submit">
+</form>
+
+</div>
+</body>
+</html>
+

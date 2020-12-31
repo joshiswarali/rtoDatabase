@@ -1,0 +1,91 @@
+<?php
+
+// check if the form has been submitted and display the results
+if (!empty($_POST['vehicleregno'])) {
+
+  define('DB_NAME', 'rtodb');
+  define('DB_USER', 'root');
+  define('DB_PASSWORD', '');
+  define('DB_HOST', 'localhost');
+
+  $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+  if (!$conn) {
+    die('Could not connect: ' . mysqli_connect_error());
+  }
+
+  // escape the post data to prevent injection attacks
+  $vehicleregno = mysqli_real_escape_string($conn, $_POST['vehicleregno']);
+
+  $sql = "SELECT * FROM vehicle_registration,vehicle_tax WHERE vehicle_registration.vehicleregno=vehicle_tax.vehicleregno='$vehicleregno'"; 
+  $result = mysqli_query($conn, $sql);
+
+  // check if the query returned a result
+  if (!$result) {
+      echo 'You are not eligible for master pass';
+  } else {
+    // result to output the table
+    echo "Applied for master pass";
+    sql1 = "INSERT INTO masterpass (vehicleregno,masterpassid,issuedate,expirydate) VALUES ('$vehicleregno','$masterpassid','$issuedate','$expirydate')";
+    $result1=mysqli_query($conn,$sql1);
+    if(!result1)
+      echo "error";
+   
+  }
+
+  mysqli_close($conn);
+} // end submitted
+else
+{
+// not submitted to output the form
+?>
+<style>
+p1
+{
+  font-family:Arial;
+  font-size:20px;
+  font-weight:bold;
+}
+
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    width:100px;
+    text-decoration: none;
+    color: white;
+    background:steelblue;
+    font-family:Arial;
+    font-weight:bold;
+    font-size:18px;
+    padding:10px;
+}
+
+input[type="submit"]{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    width:300px;
+    text-decoration: none;
+    color: white;
+    background:steelblue;
+    font-family:Arial;
+    font-weight:bold;
+    font-size:18px;
+    padding:10px;
+}
+
+</style>
+ <br><br><br>
+ <center><a href="rtousermainmenu.html" class="button">Main Menu</a><a href="rtostartpage.html" class="button">Logout</a>
+ <br><br><br><br><br><br>
+<form action="user master pass.php" method="post">
+  <label><center><p1>Enter registration number:</p1><br><br></center></label>
+  <input name="vehicleregno" type="text" placeholder="Type Here">
+  <br>
+  <br>
+  <input type="submit" value="Enter">
+</form></center>
+<?php
+} // end not submitted
+?>

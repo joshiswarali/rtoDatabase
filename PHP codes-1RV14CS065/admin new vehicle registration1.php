@@ -1,0 +1,106 @@
+<?php
+//connection to database
+mysql_connect('localhost','root','');
+
+//select database
+mysql_select_db('rtodb');
+
+$sql="SELECT * FROM vehicle_registration";
+
+$records=mysql_query($sql);
+
+?>
+
+
+<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vehicle Registration</title>
+</head>
+<body>
+
+<center><table width="1000" border="1" cellpadding="1" cellspacing="1">
+
+<tr>
+<th><p>Appl.No.</p></th>
+<th><p>Owner Name</p></th>
+<th><p>Phone number</p></th>
+<th><p>Address</p></th>
+<th><p>Sex</p></th>
+<th><p>Type</p></th>
+
+</tr>
+
+<style type="text/css">
+div
+{
+ font-family:Arial;
+ font-weight:bold;
+}
+
+p
+{
+
+ font-family:Arial;
+ font-weight:bold;
+}
+
+p1
+{
+
+ font-family:Arial;
+ 
+}
+</style>
+
+
+<?php
+$l1="2 Wheeler Learner's";
+$l2="4 Wheeler Learner's";
+while($driver_licence=mysql_fetch_assoc($records) )
+{
+   if($driver_licence['vehicleregno']==NULL)
+ {
+  
+   echo"<tr>";
+   echo"<td><p1>".$driver_licence['applno']."</p1></td>";
+   echo"<td><p1>".$driver_licence['ownername']."</p1></td>";
+   echo"<td><p1>".$driver_licence['ownernumber']."</p1></td>";
+   echo"<td><p1>".$driver_licence['address']."</p1></td>";
+   echo"<td><p1>".$driver_licence['sex']."</p1></td>";
+   echo"<td><p1>".$driver_licence['type']."</p1></td>";
+  
+   echo"</tr>";
+    
+ }
+ 
+}
+?>
+
+</table>
+<br>
+<br>
+
+
+<div class="container">
+<form action="admin new vehicle registration2.php" method="post">
+    <p>
+        <label for="Applno">Application number:</label>
+        <input type="text" name="applno" id="Applno">
+    </p>
+    <p>
+        <label for="Vehicleregno">Vehicle Registration Number:</label>
+        <input type="text" name="vehicleregno" id="Vehicleregno">
+    </p>
+    <p>
+        <label for="Regdate">Registration date:</label>
+        <input type="date" name="regdate" id="Regdate">
+    </p>
+    
+   <input type="submit" value="Submit">
+</form>
+</div>
+</center>
+</body>
+</html>
